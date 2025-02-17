@@ -70,7 +70,7 @@ class _DeviceInfoScreenState extends State<DeviceInfoScreen> {
           ),
           SizedBox(height: 30),
 
-          // "Suivant" Button to Navigate to Location Page
+          // "Suivant" pour vue 3
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.greenAccent,
