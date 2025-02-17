@@ -9,7 +9,7 @@ class LocationScreen extends StatefulWidget {
 
 class _LocationScreenState extends State<LocationScreen> {
   GoogleMapController? mapController;
-  LatLng _currentPosition = LatLng(36.75, 3.06); // Default: Algiers
+  LatLng _currentPosition = LatLng(36.75, 3.06); // Default: Alg
   bool _isMapReady = false;
 
   @override
@@ -52,7 +52,7 @@ class _LocationScreenState extends State<LocationScreen> {
                 _isMapReady = true;
               });
 
-              // Move to current location once the map is ready
+            
               if (_isMapReady) {
                 _getCurrentLocation();
               }
