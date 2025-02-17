@@ -22,7 +22,7 @@ class _FormScreenState extends State<FormScreen> {
   String? _selectedWilaya;
   final _formKey = GlobalKey<FormState>();
 
-  // List of Algerian Wilayas
+  // Liste de  Wilayas
   final List<String> wilayas = [
     "Adrar", "Chlef", "Laghouat", "Oum El Bouaghi", "Batna", "Béjaïa", "Biskra", "Béchar", "Blida", "Bouira",
     "Tamanrasset", "Tébessa", "Tlemcen", "Tiaret", "Tizi Ouzou", "Alger", "Djelfa", "Jijel", "Sétif", "Saïda",
@@ -70,18 +70,16 @@ class _FormScreenState extends State<FormScreen> {
         if (response.statusCode == 200) {
           var responseData = jsonDecode(response.body);
           if (responseData["status"] == "success") {
-            // Show success message
+            // afficher msg success
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text("Inscription réussie")),
             );
 
-            // Navigate to DeviceInfoScreen
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => DeviceInfoScreen()),
             );
 
-            // Clear form fields
             _formKey.currentState!.reset();
             setState(() {
               _selectedGender = null;
@@ -120,29 +118,29 @@ class _FormScreenState extends State<FormScreen> {
             ),
           ),
           body: Center(
-          child: SingleChildScrollView( // Enables scrolling
-          child: Padding(
-          padding: const EdgeInsets.all(16.0), // Adds padding for better UI
-          child: Form(
-          key: _formKey,
-          child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start, // Align text to left
-          mainAxisAlignment: MainAxisAlignment.center,
+           child: SingleChildScrollView(
+            child: Padding(
+             padding: const EdgeInsets.all(16.0), 
+              child: Form(
+              key: _formKey,
+                child: Column(
+                   crossAxisAlignment: CrossAxisAlignment.start, 
+                   mainAxisAlignment: MainAxisAlignment.center,
           children: [
           // champ text
           Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TextFormField(
-          keyboardType: TextInputType.text,
-          controller: _nomController,
-          validator: (value) {
-          if (value == null || value.isEmpty) {
-          return 'Format nom valide';
+            padding: const EdgeInsets.all(8.0),
+              child: TextFormField(
+               keyboardType: TextInputType.text,
+               controller: _nomController,
+               validator: (value) {
+               if (value == null || value.isEmpty) {
+               return 'Format nom valide';
           }
-          return null;
+               return null;
           },
           decoration: InputDecoration(
-          labelText: 'Nom et prénom', border: OutlineInputBorder()),
+            labelText: 'Nom et prénom', border: OutlineInputBorder()),
           ),
           ),
 
@@ -150,18 +148,18 @@ class _FormScreenState extends State<FormScreen> {
 
           // champ Email
           Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TextFormField(
-          keyboardType: TextInputType.emailAddress,
-          controller: _emailController,
-          validator: (value) {
+            padding: const EdgeInsets.all(8.0),
+             child: TextFormField(
+              keyboardType: TextInputType.emailAddress,
+              controller: _emailController,
+              validator: (value) {
           if (value == null || value.isEmpty) {
-          return 'Format email valide';
+             return 'Format email valide';
           }
-          return null;
+             return null;
           },
           decoration: InputDecoration(
-          labelText: 'Email', border: OutlineInputBorder()),
+            labelText: 'Email', border: OutlineInputBorder()),
           ),
           ),
 
@@ -169,18 +167,18 @@ class _FormScreenState extends State<FormScreen> {
 
           // champ tlp
           Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TextFormField(
-          keyboardType: TextInputType.phone,
-          controller: _numeroController,
-          validator: (value) {
-          if (value == null || value.isEmpty) {
-          return 'Format numéro valide';
-          }
-          return null;
+            padding: const EdgeInsets.all(8.0),
+            child: TextFormField(
+              keyboardType: TextInputType.phone,
+              controller: _numeroController,
+              validator: (value) {
+              if (value == null || value.isEmpty) {
+              return 'Format numéro valide';
+              }
+              return null;
           },
-          decoration: InputDecoration(
-          labelText: 'Numéro de téléphone', border: OutlineInputBorder()),
+                decoration: InputDecoration(
+                labelText: 'Numéro de téléphone', border: OutlineInputBorder()),
           ),
           ),
 
@@ -188,22 +186,22 @@ class _FormScreenState extends State<FormScreen> {
 
           // selection de Date
           Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TextFormField(
-          controller: _dateController,
-          readOnly: true,
-          validator: (value) {
-          if (value == null || value.isEmpty) {
-          return 'Veuillez sélectionner une date';
-          }
-          return null;
+            padding: const EdgeInsets.all(8.0),
+            child: TextFormField(
+            controller: _dateController,
+            readOnly: true,
+            validator: (value) {
+            if (value == null || value.isEmpty) {
+            return 'Veuillez sélectionner une date';
+            }
+            return null;
           },
-          decoration: InputDecoration(
-          labelText: 'Date de naissance',
-          border: OutlineInputBorder(),
-          suffixIcon: Icon(Icons.calendar_today),
-          ),
-          onTap: () => _selectDate(context),
+              decoration: InputDecoration(
+               labelText: 'Date de naissance',
+               border: OutlineInputBorder(),
+               suffixIcon: Icon(Icons.calendar_today),
+              ),
+              onTap: () => _selectDate(context),
           ),
           ),
 
@@ -211,28 +209,28 @@ class _FormScreenState extends State<FormScreen> {
 
           // case a coucher pour Sexe
           Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-          Text(
-          'Sexe',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
+            padding: const EdgeInsets.all(8.0),
+              child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                Text(
+                'Sexe',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
           Row(
           children: [
           Expanded(
-          child: RadioListTile<String>(
-          title: Text('Féminin', style: TextStyle(fontSize: 11),),
-          value: 'Féminin',
-          groupValue: _selectedGender,
-          onChanged: (value) {
-          setState(() {
-          _selectedGender = value;
-          });
-          },
-          ),
-          ),
+              child: RadioListTile<String>(
+              title: Text('Féminin', style: TextStyle(fontSize: 11),),
+              value: 'Féminin',
+              groupValue: _selectedGender,
+                onChanged: (value) {
+                setState(() {
+                _selectedGender = value;
+              });
+            },
+           ),
+         ),
           Expanded(
           child: RadioListTile<String>(
           title: Text('Masculin',  style: TextStyle(fontSize: 10),),
@@ -241,12 +239,12 @@ class _FormScreenState extends State<FormScreen> {
           onChanged: (value) {
           setState(() {
           _selectedGender = value;
-          });
-          },
-          ),
-          ),
-          ],
-          ),
+                });
+               },
+              ),
+             ),
+            ],
+           ),
           ],
           ),
           ),
@@ -255,58 +253,58 @@ class _FormScreenState extends State<FormScreen> {
 
       //  selecteur deroulant pour Wilayas
       Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: DropdownButtonFormField<String>(
-      value: _selectedWilaya,
-      hint: Text('Sélectionner une Wilaya'),
-      decoration: InputDecoration(
-      labelText: 'Wilaya',
-      border: OutlineInputBorder(),
-      ),
-      items: wilayas.map((wilaya) {
-      return DropdownMenuItem(
-      value: wilaya,
-      child: Text(wilaya),
-      );
-      }).toList(),
-      onChanged: (value) {
-      setState(() {
-      _selectedWilaya = value;
-      });
-      },
-      validator: (value) {
-      if (value == null) {
-      return 'Veuillez sélectionner une Wilaya';
-      }
-      return null;
-      },
-      ),
+          padding: const EdgeInsets.all(8.0),
+             child: DropdownButtonFormField<String>(
+             value: _selectedWilaya,
+             hint: Text('Sélectionner une Wilaya'),
+             decoration: InputDecoration(
+             labelText: 'Wilaya',
+             border: OutlineInputBorder(),
+          ),
+          items: wilayas.map((wilaya) {
+          return DropdownMenuItem(
+            value: wilaya,
+            child: Text(wilaya),
+            );
+            }).toList(),
+          onChanged: (value) {
+          setState(() {
+          _selectedWilaya = value;
+          });
+          },
+          validator: (value) {
+            if (value == null) {
+            return 'Veuillez sélectionner une Wilaya';
+          }
+          return null;
+         },
+        ),
       ),
 
       SizedBox(height: 15.0),
 
       // champs d'commentaire (zone de texte)
       Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: TextFormField(
-      controller: _commentaireController,
-      maxLines: 2, // Makes the field a textarea
-      validator: (value) {
-      if (value == null || value.isEmpty) {
-      return 'Veuillez entrer un commentaire';
-      }
-      return null;
-      },
-      decoration: InputDecoration(
-      labelText: 'Commentaire',
-      border: OutlineInputBorder(),
-      ),
-      ),
+         padding: const EdgeInsets.all(8.0),
+         child: TextFormField(
+          controller: _commentaireController,
+          maxLines: 2, 
+          validator: (value) {
+          if (value == null || value.isEmpty) {
+          return 'Veuillez entrer un commentaire';
+            }
+          return null;
+            },
+          decoration: InputDecoration(
+          labelText: 'Commentaire',
+          border: OutlineInputBorder(),
+          ),
+        ),
       ),
 
     SizedBox(height: 30.0),
 
-    // Bouton "Suivant"
+    // Button "Suivant"
               Align(
                 alignment: Alignment.centerRight,
                 child: SizedBox(
